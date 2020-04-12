@@ -1,8 +1,9 @@
 FROM alpine:latest
 
-USER 1001
+USER root
 RUN apk --update add nginx
 
+USER 1001
 COPY 2048 /usr/share/nginx/html
 
 EXPOSE 80
