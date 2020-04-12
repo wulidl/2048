@@ -1,10 +1,11 @@
 FROM alpine:latest
 
-RUN apk --update add nginx
+RUN apk add --update nginx
+RUN sed -i 's/return 404;/root  \/2048; index  index.html;/' /etc/nginx/conf.d/default.conf
+RUN mkdir /2048
+RUN mkdir /run/nginx
 
-RUN mkdir -p /run/nginx
-
-COPY 2048 /usr/share/nginx/html
+COPY 2048 /2048
 
 EXPOSE 80
 
